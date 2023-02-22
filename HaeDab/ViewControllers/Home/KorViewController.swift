@@ -43,7 +43,7 @@ class KorViewController: UIViewController {
         
         if text == "1" {
                         
-                        UIImageview.image = UIImage(named: "설명서Depth2-3")
+            UIImageview.image = UIImage(named: "설명서Depth2-3")
 //            UIImageview.image = UIImage(named: "설명서Depth2_4")
             bannerView.adUnitID = "ca-app-pub-7837892529291145/1530696179"
             

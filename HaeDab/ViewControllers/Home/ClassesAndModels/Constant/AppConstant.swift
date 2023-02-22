@@ -13,12 +13,12 @@ let APPDEL = UIApplication.shared.delegate as! AppDelegate
 
 struct Constant {
     
-    public static let kAppName = "OpenAISwift"
+    public static let kAppName = "HaeDab"
 }
 
 struct OpenAISecretKey {
     
-    public static let SECRETKEY = "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"
+    public static let SECRETKEY = "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"
 }
 
 extension UIViewController {
