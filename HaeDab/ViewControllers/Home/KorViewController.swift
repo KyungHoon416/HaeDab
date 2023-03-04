@@ -13,6 +13,7 @@ class KorViewController: UIViewController {
     
     @IBOutlet weak var bannerView: GADBannerView!
     var text : String = ""
+//    var text1 : String = UserDefaults.standard.string(forKey: "text")!
     
     @IBAction func NextBtn(_ sender: Any) {
         self.performSegue(withIdentifier: "KorToCate", sender: text)
@@ -24,8 +25,6 @@ class KorViewController: UIViewController {
         
         
         
-
-        // Do any additional setup after loading the view.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -40,32 +39,41 @@ class KorViewController: UIViewController {
         super.viewWillAppear(animated)
         
         print("viewWillAppear_text : \(text)")
+//        print("viewWillAppear_text : \(text1)")
         
         if text == "1" {
                         
             UIImageview.image = UIImage(named: "설명서Depth2-3")
-//            UIImageview.image = UIImage(named: "설명서Depth2_4")
-            bannerView.adUnitID = "ca-app-pub-7837892529291145/1530696179"
+
+//            bannerView.adUnitID = "ca-app-pub-2566854643827259/8123749016"
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
             
         }else {
             UIImageview.image = UIImage(named: "영어_설명서")
-            bannerView.adUnitID = "ca-app-pub-7837892529291145/4016193058"
+//            bannerView.adUnitID = "ca-app-pub-7837892529291145/4016193058"
+//            bannerView.adUnitID = "ca-app-pub-2566854643827259/1091436806"
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
             
         }
+        
+//        if text1 == "1" {
+//                        
+//            UIImageview.image = UIImage(named: "설명서Depth2-3")
+//
+////            bannerView.adUnitID = "ca-app-pub-2566854643827259/8123749016"
+//            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+//            
+//        }else if text1 == "0"{
+//            UIImageview.image = UIImage(named: "영어_설명서")
+////            bannerView.adUnitID = "ca-app-pub-7837892529291145/4016193058"
+////            bannerView.adUnitID = "ca-app-pub-2566854643827259/1091436806"
+//            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+//            
+//        }
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         
+        
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

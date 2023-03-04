@@ -67,7 +67,7 @@ class OpenAIManager {
         let jsonPayload = [
             "prompt": prompt,
             "model": "text-davinci-003",
-            "max_tokens": 2048,
+            "max_tokens": 1024,
             "temperature": 0
         ] as [String : Any]
         

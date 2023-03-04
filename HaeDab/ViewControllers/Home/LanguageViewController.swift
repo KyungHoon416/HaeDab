@@ -28,7 +28,9 @@ class LanguageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         requestPermission()
-        bannerView.adUnitID = "ca-app-pub-7837892529291145/7029616622"
+//        bannerView.adUnitID = "ca-app-pub-2566854643827259/3981872769"
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
+//        ca-app-pub-3940256099942544/6300978111
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
 

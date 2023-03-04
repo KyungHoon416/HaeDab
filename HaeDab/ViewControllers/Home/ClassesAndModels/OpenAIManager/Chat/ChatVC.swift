@@ -7,21 +7,35 @@
 
 import UIKit
 import GoogleMobileAds
-
+//GADFullScreenContentDelegate
 class ChatVC: UIViewController,GADFullScreenContentDelegate {
     
-    //MARK:  Outlets and Variable Declarations
     
+    //popupView
+    @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var popupView: UIView!
+    
+    @IBOutlet weak var admobPopup: UIView!
+    @IBOutlet weak var popupimage: UIImageView!
+    @IBOutlet weak var popupText: UILabel!
+    @IBOutlet weak var okBtn: UIButton!
+    @IBOutlet weak var clostBtn: UIButton!
+    
+    
+    //MARK:  Outlets and Variable Declarations
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tblChat: UITableView!
     @IBOutlet weak var txtMessage: UITextField!
     @IBOutlet weak var viewSendMessage: UIView!
     @IBOutlet weak var viewSendMessageBottom: NSLayoutConstraint!
     @IBOutlet weak var btnSendMessage: UIButton!
+    
+    var loaded : Bool = false
     var buttoncount : Int = 0
     var text : String = ""
     /// The interstitial ad.
     var interstitial: GADInterstitialAd?
+    var rewadAd: GADRewardedAd?
     
 //    private struct ChatGPT {
 //
@@ -42,7 +56,9 @@ class ChatVC: UIViewController,GADFullScreenContentDelegate {
         super.viewDidLoad()
         if text == "1" {
             txtMessage.attributedPlaceholder = NSAttributedString(string: "여기에 글쓰세요", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+
         }else {
+//
             txtMessage.attributedPlaceholder = NSAttributedString(string: "Write a message", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
         }
         initWithObjects()
@@ -53,61 +69,143 @@ class ChatVC: UIViewController,GADFullScreenContentDelegate {
         var AdpubTest : String
 
         switch buttoncount {
-        case 4 :
+        case 1 :
             // 테스트 광고
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/8078355869"
+            Adpub = "ca-app-pub-2566854643827259/4539457725"
+        case 2 :
+            AdpubTest = "ca-app-pub-3940256099942544/1033173712"
+            Adpub = "ca-app-pub-2566854643827259/4200546372"
+        case 3 :
+            AdpubTest = "ca-app-pub-3940256099942544/1033173712"
+            Adpub = "ca-app-pub-2566854643827259/4619618279"
+        case 4 :
+            AdpubTest = "ca-app-pub-3940256099942544/1033173712"
+            Adpub = "ca-app-pub-2566854643827259/3259818032"
         case 5 :
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/8222428736"
+            Adpub = "ca-app-pub-2566854643827259/9769386066"
         case 6 :
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/7056686727"
+            Adpub = "ca-app-pub-2566854643827259/4217676485"
         case 7 :
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/3736937557"
+            Adpub = "ca-app-pub-2566854643827259/9386242689"
         case 8 :
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/8797692543"
+            Adpub = "ca-app-pub-2566854643827259/5513628048"
         case 9 :
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/9834893304"
+            Adpub = "ca-app-pub-2566854643827259/2265466416"
         case 10 :
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/9280090039"
-        case 11 :
-            AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/9343938710"
-        case 12 :
-            AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/1410157113"
-        case 13 :
-            AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/7783993775"
+            Adpub = "ca-app-pub-2566854643827259/9616794085"
         default:
             AdpubTest = "ca-app-pub-3940256099942544/1033173712"
-            Adpub = "ca-app-pub-7837892529291145/8078355869"
+            Adpub = "ca-app-pub-2566854643827259/4539457725"
         }
         
         
       let request = GADRequest()
-      GADInterstitialAd.load(
-        withAdUnitID: Adpub, request: request
-      ) { (ad, error) in
-        if let error = error {
-          print("Failed to load interstitial ad with error: \(error.localizedDescription)")
-          return
-        }
-        self.interstitial = ad
-        self.interstitial?.fullScreenContentDelegate = self
-      }
+//      GADInterstitialAd.load(
+//        withAdUnitID: AdpubTest, request: request
+//      ) { (ad, error) in
+//        if let error = error {
+//          print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+//          return
+//        }
+//        self.interstitial = ad
+////          self.interstitial?.
+//        self.interstitial?.fullScreenContentDelegate = self
+//      }
+//        let request = GADRequest()
+        print("Ad wasn't request : \(request)")
+        
+            GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+                                        request: request,
+                              completionHandler: { [self] ad, error in
+                if let error = error {
+                    print("Failed to load interstitial ad with error: \(error.localizedDescription)")
+                    return
+                }
+                
+                print("Ad wasn't adaccessibilityViewIsModal : \(ad?.accessibilityViewIsModal)")
+                
+                loaded = true
+                                interstitial = ad
+                                interstitial?.fullScreenContentDelegate = self
+                
+                              }
+            )
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        self.popupView.isHidden = true
+//        self.backgroundView.isHidden = true
                         loadInterstitial()
         
+        
     }
+    
+    func popupview() {
+        
+        
+        buttoncount += 1
+//
+        
+        
+//        if 4...10 ~= buttoncount{
+//
+//
+//
+//            self.clostBtn.isHidden = true
+//            self.popupimage.image = UIImage(named: "Group_264")
+//
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+              // 1초 후 실행될 부분
+//        let vc = AdMobViewController()
+      
+        guard let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "AdMobViewController") as? AdMobViewController else { return }
+////                // 화면 전환 애니메이션 설정
+                secondViewController.modalTransitionStyle = .coverVertical
+////                // 전환된 화면이 보여지는 방법 설정 (fullScreen)
+        secondViewController.modalPresentationStyle = .pageSheet
+                self.present(secondViewController, animated: true, completion: nil)
+//        self.loadInterstitial()
+//        showInterstitial(viewController: secondViewController)
+//        self.interstitial?.present(fromRootViewController:secondViewController)
+//        if interstitial != nil {
+//            self.interstitial!.present(fromRootViewController: self)
+//          } else {
+//            print("Ad wasn't ready")
+//          }
+//        try! self.interstitial?.canPresent(fromRootViewController: self)
+
+        
+             
+                
+//            }
+            
+        
+//            }else if buttoncount > 13{
+//                buttoncount = 4
+//
+//            }
+//        self.okBtn.addTarget(self, action: #selector(okAction(_:)), for: .touchUpInside)
+//        self.clostBtn.addTarget(self, action: #selector(closeAction(_:)), for: .touchUpInside)
+        
+        
+    }
+    
+//    @objc func okAction (_ sender : UIButton){
+////        self.interstitial?.present(fromRootViewController: self)
+//    }
+//    @objc func closeAction (_ sender : UIButton){
+//        self.popupView.isHidden = true
+//        self.backgroundView.isHidden = true
+//
+//    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -124,17 +222,8 @@ class ChatVC: UIViewController,GADFullScreenContentDelegate {
         self.view.endEditing(true)
         
         if !(txtMessage.isempty()) {
-            
-            buttoncount += 1
-            if 4...13 ~= buttoncount{
-                loadInterstitial()
-            self.interstitial?.present(fromRootViewController: self)
-           
-                }else if buttoncount > 13{
-                buttoncount = 3
-                    self.interstitial?.present(fromRootViewController: self)
-           
-                               }
+            popupview()
+
             self.showHud()
             self.sendMessage(question: self.txtMessage.text?.trime() ?? "", isSend: true)
             
@@ -212,7 +301,37 @@ class ChatVC: UIViewController,GADFullScreenContentDelegate {
 
         }
     }
+    
+     func showInterstitial(viewController: AdMobViewController?) {
+        guard loaded, let controller = viewController else {
+            loadInterstitial()
+            return
+        }
+         print("controller : \(controller)")
+        interstitial?.present(fromRootViewController: controller)
+        
+    }
+    
+    // MARK: - GADFullScreenContentDelegate
+
+    func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+      print("Ad will present full screen content.")
+
+    }
+
+    func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error)
+    {
+      print("Ad failed to present full screen content with error \(error.localizedDescription).")
+    }
+
+    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+      print("Ad did dismiss full screen content.")
+        loaded = false
+        loadInterstitial()
+    }
 }
+
+
 
 //MARK:  UITableViewDelegate Methods
 extension ChatVC: UITableViewDelegate {
@@ -319,40 +438,6 @@ extension ChatVC: UITableViewDataSource {
         }
     }
     
-//    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-//
-//        let viewFooter = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-//        viewFooter.backgroundColor = .clear
-//        viewFooter.transform = CGAffineTransform(scaleX: 1, y: 1)
-//
-//        var strDate = "Jan 18, 2023"
-//
-//        let dateCurrent = Date()
-//        let strCurrent = dateCurrent.toStringWith(formate: "dd-MM-YYYY")
-//
-//        if strCurrent == strDate {
-//            strDate = strDate.replacingOccurrences(of: strCurrent, with: "Today")
-//        }
-//
-//        let dateYesterday = Date.yesterday
-//        let strYesterday = dateYesterday.toStringWith(formate: "dd-MM-YYYY")
-//        if strYesterday == strDate{
-//            strDate = strDate.replacingOccurrences(of: strYesterday, with: "Yesterday")
-//        }
-//
-//        let labelWidth = strDate.width(withConstrainedHeigh: 47, font: UIFont(name: "HelveticaNeue-UltraLight", size: 14) ?? UIFont())
-//
-//        let lbl = UILabel(frame: CGRect(x: viewFooter.center.x, y: 0, width: labelWidth + 28, height: 30))
-//        lbl.font = UIFont(name: "HelveticaNeue-UltraLight", size: 12)
-//        lbl.center = viewFooter.center
-//        lbl.textAlignment = .center
-//        lbl.backgroundColor = .white
-//        lbl.clipsToBounds = true
-//        lbl.layer.cornerRadius = lbl.frame.height / 2.0
-//        lbl.text = strDate
-//        viewFooter.addSubview(lbl)
-//        return viewFooter
-//    }
 }
 
 //MARK:  UITextFieldDelegate Methods
@@ -388,17 +473,6 @@ extension ChatVC: UITextFieldDelegate {
     }
 }
 
-// MARK: - GADFullScreenContentDelegate
 
-func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-  print("Ad will present full screen content.")
-}
 
-func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error)
-{
-  print("Ad failed to present full screen content with error \(error.localizedDescription).")
-}
 
-func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-  print("Ad did dismiss full screen content.")
-}

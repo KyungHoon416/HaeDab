@@ -14,6 +14,42 @@
         </array>
     </customFonts>
     <scenes>
+        <!--Ad Mob View Controller-->
+        <scene sceneID="YVq-fm-8Ly">
+            <objects>
+                <viewController storyboardIdentifier="AdMobViewController" modalPresentationStyle="overCurrentContext" id="dN3-Y2-fgh" customClass="AdMobViewController" customModule="HaeDab" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rpg-zH-imP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kx1-Nh-xUL">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rLH-zu-NQd"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kx1-Nh-xUL" firstAttribute="leading" secondItem="rLH-zu-NQd" secondAttribute="leading" id="DFX-Op-a1x"/>
+                            <constraint firstItem="rLH-zu-NQd" firstAttribute="trailing" secondItem="kx1-Nh-xUL" secondAttribute="trailing" id="UXn-NS-UG8"/>
+                            <constraint firstItem="kx1-Nh-xUL" firstAttribute="top" secondItem="rLH-zu-NQd" secondAttribute="top" id="Zmc-gC-udd"/>
+                            <constraint firstItem="rLH-zu-NQd" firstAttribute="bottom" secondItem="kx1-Nh-xUL" secondAttribute="bottom" id="ciI-7j-wN6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uPF-Bx-7Jx"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="webview" destination="kx1-Nh-xUL" id="bRA-lL-mbd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U0c-nY-Prk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="944.79999999999995" y="-36.431784107946029"/>
+        </scene>
         <!--ChatVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -167,7 +203,7 @@
                                         </connections>
                                     </tableView>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WZ5-ZE-aWe">
-                                        <rect key="frame" x="0.0" y="531" width="374" height="76"/>
+                                        <rect key="frame" x="0.0" y="531" width="375" height="76"/>
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHJ-9j-6vy">
                                                 <rect key="frame" x="16" y="16" width="342" height="44"/>
@@ -220,7 +256,6 @@
                                         <constraints>
                                             <constraint firstItem="SHJ-9j-6vy" firstAttribute="leading" secondItem="WZ5-ZE-aWe" secondAttribute="leading" constant="16" id="BcA-8G-epa"/>
                                             <constraint firstItem="SHJ-9j-6vy" firstAttribute="top" secondItem="WZ5-ZE-aWe" secondAttribute="top" constant="16" id="W00-jn-hI6"/>
-                                            <constraint firstItem="SHJ-9j-6vy" firstAttribute="centerX" secondItem="WZ5-ZE-aWe" secondAttribute="centerX" id="ZaT-zt-ngG"/>
                                             <constraint firstAttribute="bottom" secondItem="SHJ-9j-6vy" secondAttribute="bottom" constant="16" id="f4k-bS-POM"/>
                                         </constraints>
                                     </view>
@@ -230,8 +265,8 @@
                                     <constraint firstItem="Y7m-g1-ctd" firstAttribute="top" secondItem="HuO-Jg-dv1" secondAttribute="top" constant="10" id="0BO-Nz-ecX"/>
                                     <constraint firstItem="WZ5-ZE-aWe" firstAttribute="leading" secondItem="Y7m-g1-ctd" secondAttribute="leading" id="4qH-52-Icc"/>
                                     <constraint firstItem="Y7m-g1-ctd" firstAttribute="leading" secondItem="HuO-Jg-dv1" secondAttribute="leading" id="9cH-pM-XVh"/>
+                                    <constraint firstAttribute="trailing" secondItem="WZ5-ZE-aWe" secondAttribute="trailing" id="RpT-MH-A3a"/>
                                     <constraint firstItem="WZ5-ZE-aWe" firstAttribute="top" secondItem="Y7m-g1-ctd" secondAttribute="bottom" id="WwI-1e-3uU"/>
-                                    <constraint firstItem="WZ5-ZE-aWe" firstAttribute="centerX" secondItem="Y7m-g1-ctd" secondAttribute="centerX" id="Zbf-5H-hDv"/>
                                     <constraint firstAttribute="trailing" secondItem="Y7m-g1-ctd" secondAttribute="trailing" constant="1" id="eln-CG-Ema"/>
                                     <constraint firstAttribute="bottom" secondItem="WZ5-ZE-aWe" secondAttribute="bottom" id="tvf-C9-TE3"/>
                                 </constraints>

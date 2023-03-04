@@ -58,20 +58,17 @@ class CateViewController: UIViewController {
         if text == "1" {
             
             TopImage.image = UIImage(named: "TopKOR")
-//            firstImage.image = UIImage(named: "Group_182_Kor")
-//            secondImage.image = UIImage(named: "Group_183_Kor")
-//            ThridImage.image = UIImage(named: "Group_184_Kor")
             FourImage.image = UIImage(named: "Group 228_Kor")
-            bannerView.adUnitID = "ca-app-pub-7837892529291145/5260173726"
+//            bannerView.adUnitID = "ca-app-pub-2566854643827259/3770119773"
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
             
             
         }else {
             TopImage.image = UIImage(named: "TopEng")
-//            firstImage.image = UIImage(named: "Group_188_Eng")
-//            secondImage.image = UIImage(named: "Group 189_Eng")
-//            ThridImage.image = UIImage(named: "Group 189_Eng")
+
             FourImage.image = UIImage(named: "Group 226_Eng")
-            bannerView.adUnitID = "ca-app-pub-7837892529291145/1282218503"
+//            bannerView.adUnitID = "ca-app-pub-2566854643827259/2871422338"
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
             
         }
         bannerView.rootViewController = self
@@ -112,26 +109,26 @@ extension CateViewController : UITableViewDelegate{
         self.table.isHidden = true
         if indexPath.row == 0 {
             text = "1"
-            
+//            UserDefaults.standard.set(text, forKey: "text")
             TopImage.image = UIImage(named: "TopKOR")
             TopImage.contentMode = .scaleToFill
-//            firstImage.image = UIImage(named: "Group_182_Kor")
-//            secondImage.image = UIImage(named: "Group_183_Kor")
-//            ThridImage.image = UIImage(named: "Group_184_Kor")
+
             FourImage.image = UIImage(named: "Group 228_Kor")
-            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//            bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
             
         }else {
             text = "0"
+//            UserDefaults.standard.set(text, forKey: "text")
             TopImage.image = UIImage(named: "TopEng")
             TopImage.contentMode = .scaleToFill
-//            firstImage.image = UIImage(named: "Group_188_Eng")
-//            secondImage.image = UIImage(named: "Group 189_Eng")
-//            ThridImage.image = UIImage(named: "Group 189_Eng")
+
             FourImage.image = UIImage(named: "Group 226_Eng")
             
-            bannerView.adUnitID = "ca-app-pub-7837892529291145/1282218503"
+//            bannerView.adUnitID = "ca-app-pub-7837892529291145/1282218503"
+            bannerView.adUnitID = "ca-app-pub-3940256099942544/6300978111"
         }
+        
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
     }
